@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Order>
+
+@{
+
+}
+<div class="container">
+    <div class="col-md-12">
+        <a class="btn btn-sm btn-outline-success" asp-controller="Order" asp-action="Insert">Ekle</a>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Masa Id</th>
+                    <th scope="col">Sipariş Statüsü Id</th>
+                    <th scope="col">Çalışan Id</th>
+                    <th scope="col">Oluşturulma Tarihi</th>
+                    <th scope="col">Oluşturan</th>
+                    <th scope="col">Güncelleme Tarihi</th>
+                    <th scope="col">Güncelleyen</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.TableId</td>
+                        <td>@item.OrderStatusId</td>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.Created</td>
+                        <td>@item.Creator</td>
+                        <td>@item.Modified</td>
+                        <td>@item.Modifier</td>
+                        <td>
+                            <a class="btn btn-sm btn-outline-danger" asp-controller="Order" asp-action="Delete" asp-route-orderId="@item.Id">Sil</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-controller="Order" asp-action="Update" asp-route-orderId="@item.Id">Güncelle</a>
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
